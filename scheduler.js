@@ -1,3 +1,14 @@
+const DIFF_COLORS = {
+  1: { bg: '#8BC34A', text: '#fff', label: 'Easy' },
+  2: { bg: '#CDDC39', text: '#000', label: 'Simple' },
+  3: { bg: '#FFC107', text: '#000', label: 'Medium' },
+  4: { bg: '#FF9800', text: '#fff', label: 'Hard' },
+  5: { bg: '#F44336', text: '#fff', label: 'Beast' }
+};
+
+const TIMELINE_COLORS = [
+  '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#F44336', '#00BCD4'
+];
 class MinHeap {
   // compareFn: a function that tells us how to compare two items
   // Example: (a, b) => a.deadline - b.deadline  means "sort by deadline"
