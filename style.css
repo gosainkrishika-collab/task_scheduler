@@ -1,0 +1,375 @@
+/* ============================================================
+   styles.css
+   WHO WROTE THIS: Person 2 (UI Developer)
+   WHAT THIS FILE DOES: All the visual styling for the app.
+   Think of this as the "look and feel" file.
+   CSS = Cascading Style Sheets. It makes HTML look pretty.
+   ============================================================ */
+
+/* --- RESET: Remove default browser spacing on everything --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Makes sizing math easier - padding doesn't add to width */
+}
+
+/* --- PAGE BACKGROUND & DEFAULT FONT --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Dark blue gradient background - goes from very dark to medium blue */
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh; /* At least full screen height */
+  color: #ffffff;    /* Default text is white */
+  padding: 20px;
+}
+
+/* --- MAIN CONTAINER: centers content and limits max width --- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto; /* auto left+right margins = centered */
+}
+
+/* --- PAGE HEADER (Title area at the top) --- */
+.header {
+  text-align: center;
+  padding: 30px 0 20px;
+  border-bottom: 3px solid #d4af37; /* Gold line under header */
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 3em;
+  color: #d4af37; /* Gold color for the title */
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); /* Glowing effect */
+  letter-spacing: 3px;
+}
+
+.header p {
+  color: #a8b2d8;
+  font-size: 1.1em;
+  margin-top: 8px;
+}
+
+/* --- CARD: The white-ish boxes that hold each section --- */
+.card {
+  background: rgba(255, 255, 255, 0.05); /* Slightly transparent white */
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Faint gold border */
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.card h2 {
+  color: #d4af37;
+  font-size: 1.4em;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- INPUT GRID: 5 columns for the task input row ---
+   Layout: [Task Name] [Deadline] [Duration] [Difficulty] [+ADD button]
+   "2fr" means Task Name gets twice the space of others */
+.input-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+
+/* Each label + input combo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: #a8b2d8;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+/* Styling for all text inputs and dropdowns */
+input, select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 0.95em;
+  transition: border-color 0.2s; /* Smooth color change on focus */
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #d4af37; /* Gold border when you click an input */
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.3); /* Faded placeholder text */
+}
+
+select option {
+  background: #1a1a2e; /* Dark background for dropdown options */
+}
+
+/* --- BUTTONS --- */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9em;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+/* Blue "Add Task" button */
+.btn-add {
+  background: #2962ff;
+  color: white;
+}
+
+.btn-add:hover {
+  background: #1e4fd8;
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Big gold "Generate" button */
+.btn-generate {
+  background: linear-gradient(135deg, #d4af37, #f0c040);
+  color: #1a1a2e;
+  font-size: 1.1em;
+  padding: 14px 32px;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.btn-generate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Red "Clear" button */
+.btn-clear {
+  background: #c62828;
+  color: white;
+}
+
+.btn-clear:hover {
+  background: #a31515;
+}
+
+/* --- TASK LIST: The row for each added task --- */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(41, 98, 255, 0.15);
+  border: 1px solid rgba(41, 98, 255, 0.4);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.task-chip .task-name {
+  font-weight: 600;
+  color: #82b1ff;
+}
+
+.task-chip .task-meta {
+  color: #a8b2d8;
+  font-size: 0.85em;
+}
+
+/* Colored badge showing difficulty level */
+.task-chip .diff-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+/* Remove button inside each task chip */
+.task-chip button {
+  background: rgba(198, 40, 40, 0.3);
+  border: none;
+  color: #ff5252;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+/* --- SCHEDULE OUTPUT: Each task slot in the results --- */
+.schedule-slot {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #d4af37; /* Gold left border accent */
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.schedule-slot:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+
+/* The circular number on the left of each slot */
+.slot-number {
+  background: #d4af37;
+  color: #1a1a2e;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1em;
+  flex-shrink: 0; /* Don't let it shrink */
+}
+
+.slot-details {
+  flex: 1; /* Take up remaining space */
+}
+
+.slot-name {
+  font-weight: 700;
+  font-size: 1.05em;
+  color: #e8eaf6;
+}
+
+.slot-time {
+  color: #a8b2d8;
+  font-size: 0.85em;
+  margin-top: 3px;
+}
+
+/* Status badge (VICTORY / TIGHT / CRITICAL) */
+.slot-status {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+/* Green = comfortable deadline */
+.status-safe {
+  background: rgba(27, 94, 32, 0.4);
+  color: #69f0ae;
+  border: 1px solid #69f0ae;
+}
+
+/* Yellow = deadline is close */
+.status-warning {
+  background: rgba(230, 81, 0, 0.4);
+  color: #ffd740;
+  border: 1px solid #ffd740;
+}
+
+/* Red = barely made it */
+.status-danger {
+  background: rgba(183, 28, 28, 0.4);
+  color: #ff5252;
+  border: 1px solid #ff5252;
+}
+
+/* Gray = task was skipped (couldn't fit) */
+.status-skipped {
+  background: rgba(84, 110, 122, 0.4);
+  color: #90a4ae;
+  border: 1px solid #90a4ae;
+}
+
+/* --- STATS GRID: 4 number boxes at top of results --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2em;
+  font-weight: 800;
+  color: #d4af37;
+}
+
+.stat-label {
+  color: #a8b2d8;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+/* --- TIMELINE BAR: Colorful progress bar showing task order --- */
+.timeline {
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.timeline-block {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7em;
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+/* --- ALGORITHM EXPLANATION BOX --- */
+.algo-explanation {
+  background: rgba(41, 98, 255, 0.1);
+  border: 1px solid rgba(41, 98, 255, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+  font-size: 0.9em;
+  color: #a8b2d8;
+  line-height: 1.6;
+}
+
+.algo-explanation strong {
+  color: #82b1ff;
+}
+
+/* --- UTILITY CLASSES --- */
+.hidden {
+  display: none !important; /* Hides the output card until schedule is generated */
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #546e7a;
+  font-style: italic;
+}
