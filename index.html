@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-  index.html
-  WHO WROTE THIS: Person 2 (UI Developer)
-  WHAT THIS FILE DOES: The skeleton/structure of the webpage.
-  Think of HTML as the bones, CSS as the clothes, JS as the brain.
-
-  FILE STRUCTURE OF THIS PROJECT:
-  ┌─ index.html   ← YOU ARE HERE (structure/layout)
-  ├─ styles.css   ← All visual styling (colors, fonts, layout)
-  ├─ scheduler.js ← All DSA logic (MinHeap, Greedy, Balancer)
-  └─ ui.js        ← All UI logic (button clicks, rendering)
-  └─ README.md    ← Project description for GitHub / judges
-
-  HOW FILES CONNECT:
-  index.html loads styles.css in <head>
-  index.html loads scheduler.js BEFORE ui.js in <body>
-  (order matters — ui.js uses functions defined in scheduler.js)
--->
 <html lang='en'>
 
 <head>
@@ -25,7 +7,7 @@
   <title>Battle Royale Task Scheduler</title>
 
   <!-- Load our CSS stylesheet -->
-  <link rel='stylesheet' href='styles.css'>
+  <link rel='stylesheet' href='style.css'>
 </head>
 
 <body>
@@ -153,17 +135,7 @@
 
     </div><!-- end card 2 (outputCard) -->
 
-  </div><!-- end .container -->
-
-
-  <!--
-    LOAD JAVASCRIPT FILES
-    ORDER MATTERS:
-    1. scheduler.js FIRST — defines MinHeap, greedySchedule(), DIFF_COLORS, etc.
-    2. ui.js SECOND — uses those functions, so they must exist first
-
-    If you swap the order, you'll get "ReferenceError: greedySchedule is not defined"
-  -->
+  </div>
   <script src='scheduler.js'></script>
   <script src='ui.js'></script>
 
